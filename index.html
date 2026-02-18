@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>יומן עבודה - ציפוי Topcret Microtopping</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&display=swap');
+        
+        :root {
+            --primary: #1e3a5f;
+            --secondary: #d4a574;
+            --accent: #e74c3c;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --info: #3498db;
+            --bg-gradient-1: #2c3e50;
+            --bg-gradient-2: #34495e;
+            --text-dark: #2c3e50;
+            --text-light: #7f8c8d;
+            --border: #bdc3c7;
+            --card-bg: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Assistant', sans-serif;
+            background: linear-gradient(135deg, var(--bg-gradient-1) 0%, var(--bg-gradient-2) 100%);
+            min-height: 100vh;
+            padding: 15px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 25px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, #2c5282 100%);
+            color: white;
+            padding: 35px 25px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+        
+        .company-logo {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            letter-spacing: 2px;
+        }
+        
+        .company-subtitle {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+        
+        .topcret-badge {
+            display: inline-block;
+            background: var(--secondary);
+            color: var(--primary);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 700;
+            margin-top: 15px;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 15px rgba(212, 165, 116, 0.4);
+        }
+        
+        .content {
+            padding: 30px 25px;
+        }
+        
+        .project-summary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+        
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 15px;
+        }
+        
+        .summary-item {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 15px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .summary-label {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+        
+        .summary-value {
+            font-size: 1.8rem;
+            font-weight: 800;
+        }
+        
+        .section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border: 2px solid var(--border);
+            transition: all 0.3s ease;
+        }
+        
+        .section:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--secondary);
+        }
+        
+        .section-icon {
+            font-size: 1.8rem;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+        
+        input, select, textarea {
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: 'Assistant', sans-serif;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(30, 58, 95, 0.1);
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        
+        .layer-tracking {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+        
+        .layer-header {
+            background: var(--primary);
+            color: white;
+            padding: 15px 20px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .layer-body {
+            padding: 20px;
+            background: #f8f9fa;
+        }
+        
+        .layer-row {
+            display: grid;
+            grid-template-columns: 80px 1fr 1fr 120px 120px 2fr;
+            gap: 10px;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .layer-row:hover {
+            border-color: var(--secondary);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .layer-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--secondary);
+            color: white;
+            font-weight: 800;
+            font-size: 1.2rem;
+            border-radius: 8px;
+            width: 60px;
+            height: 60px;
+        }
+        
+        .cost-summary {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+        }
+        
+        .cost-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .cost-item {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .cost-label {
+            font-size: 0.9rem;
+            opacity: 0.95;
+        }
+        
+        .cost-value {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-top: 5px;
+        }
+        
+        .progress-bar-container {
+            background: #ecf0f1;
+            height: 40px;
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 20px 0;
+            position: relative;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--success) 0%, #27ae60 100%);
+            border-radius: 20px;
+            transition: width 1s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        
+        .panels-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+        
+        .panels-table th {
+            background: var(--primary);
+            color: white;
+            padding: 15px;
+            text-align: right;
+            font-weight: 700;
+        }
+        
+        .panels-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .panels-table tbody tr:hover {
+            background: #f1f3f5;
+        }
+        
+        .btn-container {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 30px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 15px;
+        }
+        
+        .btn {
+            padding: 15px 35px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Assistant', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        }
+        
+        .btn-save {
+            background: linear-gradient(135deg, var(--success) 0%, #229954 100%);
+            color: white;
+        }
+        
+        .btn-print {
+            background: linear-gradient(135deg, var(--warning) 0%, #e67e22 100%);
+            color: white;
+        }
+        
+        .btn-email {
+            background: linear-gradient(135deg, var(--info) 0%, #2980b9 100%);
+            color: white;
+        }
+        
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+            color: white;
+        }
+        
+        .required {
+            color: var(--accent);
+            font-weight: bold;
+        }
+        
+        .toast {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-100px);
+            background: var(--success);
+            color: white;
+            padding: 18px 35px;
+            border-radius: 12px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            font-weight: 700;
+            z-index: 10000;
+            opacity: 0;
+            transition: all 0.5s ease;
+            font-size: 1.1rem;
+        }
+        
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+            .btn-container {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                padding: 25px 15px;
+            }
+            .company-logo {
+                font-size: 1.8rem;
+            }
+            .content {
+                padding: 20px 15px;
+            }
+            .form-row, .summary-grid, .cost-grid {
+                grid-template-columns: 1fr;
+            }
+            .layer-row {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            .layer-number {
+                width: 100%;
+                height: 50px;
+            }
+            .btn-container {
+                flex-direction: column;
+            }
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* === NotebookLM button === */
+        .btn-notebook {
+            background: linear-gradient(135deg, #a18cd1 0%, #6c5ce7 100%);
+            color: white;
+        }
+        /* === Worker dynamic rows === */
+        .worker-remarks-row td { background: #f0f4ff; padding: 8px 15px !important; }
+        .worker-remarks-input { width: 100%; padding: 8px 12px; border: 1px dashed #bdc3c7; border-radius: 8px; font-size: 0.9rem; font-family: 'Assistant', sans-serif; background: white; resize: none; min-height: 40px; }
+        .worker-name-input { font-weight: 700; border: none; background: transparent; font-size: 1rem; font-family: 'Assistant', sans-serif; width: 100%; padding: 4px; border-bottom: 2px dashed transparent; transition: border-color 0.3s; }
+        .worker-name-input:focus { border-bottom-color: #1e3a5f; outline: none; }
+        .worker-rate-input { font-weight: 700; border: 1px solid #bdc3c7; border-radius: 6px; background: white; font-size: 1rem; font-family: 'Assistant', sans-serif; width: 90px; padding: 6px 8px; text-align: center; }
+        .btn-remove-worker { background: #ff4444; color: white; border: none; border-radius: 6px; padding: 6px 10px; cursor: pointer; font-size: 0.9rem; min-width: 32px; min-height: 32px; }
+        .btn-remove-worker:hover { background: #cc0000; }
+        /* === Panel dimension inputs === */
+        .dim-pair { display: flex !important; align-items: center; gap: 4px; direction: ltr; justify-content: center; }
+        .dim-input { width: 65px !important; padding: 8px 4px !important; border: 2px solid #bdc3c7 !important; border-radius: 8px !important; font-size: 1rem; font-family: 'Assistant', sans-serif; text-align: center; font-weight: 600; background: white; }
+        .dim-input:focus { outline: none; border-color: #1e3a5f !important; box-shadow: 0 0 0 3px rgba(30,58,95,0.1); }
+        .dim-separator { font-size: 1.4rem; font-weight: 800; color: #1e3a5f; user-select: none; padding: 0 2px; }
+        .area-display { display: inline-block; background: #e8f5e9; border: 2px solid #27ae60; border-radius: 8px; padding: 8px 12px; font-weight: 700; color: #27ae60; text-align: center; min-width: 80px; font-size: 1rem; }
+    </style>
+</head>
+<body>
+    <div class="toast" id="toast">✓ הנתונים נשמרו בהצלחה!</div>
+    
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <div class="company-logo">🏗️ יומן עבודה מקצועי</div>
+                <div class="company-subtitle">ציפוי לוחות Denglass במיקרוטופינג</div>
+                <div class="topcret-badge">⭐ Topcret Spain - 7 Layers System</div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <!-- מספר יום עבודה -->
+            <div style="background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%); color: white; padding: 20px; border-radius: 15px; margin-bottom: 25px; text-align: center; box-shadow: 0 10px 30px rgba(238, 90, 111, 0.4);">
+                <h2 style="font-size: 2.5rem; font-weight: 800; margin: 0;">
+                    יום עבודה מספר <span id="dayNumber">1</span>
+                </h2>
+                <p style="margin-top: 10px; font-size: 1.1rem; opacity: 0.95;">
+                    <span id="currentDayDate"></span>
+                </p>
+            </div>
+            
+            <!-- סיכום פרויקט -->
+            <div class="project-summary">
+                <h2 style="margin-bottom: 15px; font-size: 1.8rem;">📊 סיכום פרויקט כולל</h2>
+                <div class="summary-grid">
+                    <div class="summary-item">
+                        <div class="summary-label">סה"כ לוחות נדרש</div>
+                        <div class="summary-value"><input type="number" id="totalPanelsRequired" style="width: 100%; background: transparent; border: none; color: white; font-size: 1.8rem; font-weight: 800; text-align: center;" value="0" onchange="updateProgress()"></div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">סה"כ שטח נדרש (מ"ר)</div>
+                        <div class="summary-value"><input type="number" step="0.01" id="totalAreaRequired" style="width: 100%; background: transparent; border: none; color: white; font-size: 1.8rem; font-weight: 800; text-align: center;" value="0" onchange="updateProgress()"></div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">בוצע עד כה (לוחות)</div>
+                        <div class="summary-value" id="completedPanels">0</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">בוצע עד כה (מ"ר)</div>
+                        <div class="summary-value" id="completedArea">0</div>
+                    </div>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="progressBar" style="width: 0%;">0%</div>
+                </div>
+                <div style="text-align: center; margin-top: 15px; font-size: 1.2rem; font-weight: 700;">
+                    <span id="remainingText">נותר לביצוע: 0 לוחות | 0 מ"ר</span>
+                </div>
+            </div>
+
+            <!-- פרטי יום עבודה -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-icon">📅</span>
+                    <h2 class="section-title">פרטי יום העבודה</h2>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>תאריך <span class="required">*</span></label>
+                        <input type="date" id="workDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label>יום בשבוע</label>
+                        <input type="text" id="dayOfWeek" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>שם הפרויקט <span class="required">*</span></label>
+                        <input type="text" id="projectName" placeholder="לדוגמה: וילה בהרצליה">
+                    </div>
+                    <div class="form-group">
+                        <label>כתובת האתר</label>
+                        <input type="text" id="siteAddress">
+                    </div>
+                </div>
+            </div>
+
+            <!-- מעקב אחר 7 שכבות -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-icon">🎨</span>
+                    <h2 class="section-title">מעקב ביצוע 7 שכבות Topcret</h2>
+                </div>
+                
+                <div class="layer-tracking" id="layersContainer">
+                    <!-- Layers will be added dynamically -->
+                </div>
+                
+                <button onclick="addLayerEntry()" style="margin-top: 15px; padding: 12px 25px; background: var(--secondary); color: white; border: none; border-radius: 10px; font-weight: 700; cursor: pointer; font-size: 1rem;">
+                    ➕ הוסף שכבה
+                </button>
+            </div>
+
+            <!-- לוחות שבוצעו היום -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-icon">📦</span>
+                    <h2 class="section-title">לוחות Denglass שבוצעו היום</h2>
+                </div>
+                
+                <table class="panels-table" id="panelsTable">
+                    <thead>
+                        <tr>
+                            <th>מספר לוח</th>
+                            <th>מידות (ס"מ)</th>
+                            <th>שטח (מ"ר)</th>
+                            <th>מספר שכבות שבוצעו</th>
+                            <th>סטטוס</th>
+                            <th>הערות</th>
+                        </tr>
+                    </thead>
+                    <tbody id="panelsBody">
+                        <tr>
+                            <td><input type="text" placeholder="לוח 1"></td>
+                            <td>
+                                <div class="dim-pair">
+                                    <input type="number" class="dim-input dim-w" placeholder="רוחב" min="1" oninput="calcPanelArea(this)">
+                                    <span class="dim-separator">&times;</span>
+                                    <input type="number" class="dim-input dim-h" placeholder="אורך" min="1" oninput="calcPanelArea(this)">
+                                </div>
+                            </td>
+                            <td><span class="area-display panel-area">0</span></td>
+                            <td><input type="number" min="0" max="7" value="0"></td>
+                            <td>
+                                <select>
+                                    <option value="בתהליך">בתהליך</option>
+                                    <option value="הושלם">הושלם</option>
+                                    <option value="ממתין לייבוש">ממתין לייבוש</option>
+                                </select>
+                            </td>
+                            <td><input type="text"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <button onclick="addPanelRow()" style="margin-top: 15px; padding: 12px 25px; background: var(--info); color: white; border: none; border-radius: 10px; font-weight: 700; cursor: pointer;">
+                    ➕ הוסף לוח
+                </button>
+                
+                <div style="margin-top: 20px; padding: 20px; background: #e8f5e9; border-radius: 10px; border: 2px solid var(--success);">
+                    <h3 style="color: var(--success); margin-bottom: 10px;">סיכום יומי</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                        <div>
+                            <strong>לוחות שבוצעו היום:</strong>
+                            <span id="todayPanels" style="font-size: 1.5rem; font-weight: 800; color: var(--success);"> 0</span>
+                        </div>
+                        <div>
+                            <strong>שטח שבוצע היום (מ"ר):</strong>
+                            <span id="todayArea" style="font-size: 1.5rem; font-weight: 800; color: var(--success);"> 0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- נוכחות ועלויות -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-icon">👷</span>
+                    <h2 class="section-title">נוכחות עובדים ועלויות יומיות</h2>
+                </div>
+                <div style="overflow-x: auto;">
+                    <table class="panels-table" id="workersTable">
+                        <thead>
+                            <tr>
+                                <th>עובד</th><th>תאור העבודה</th><th>שעת התחלה</th><th>שעת סיום</th>
+                                <th>סה"כ שעות</th><th>מחיר ליום (₪)</th><th>נוכח</th><th>עלות (₪)</th><th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="workersBody"></tbody>
+                        <tfoot>
+                            <tr style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white;">
+                                <td colspan="7" style="text-align: left; font-size: 1.2rem; font-weight: 800;">סה"כ עלות יומית</td>
+                                <td style="font-size: 1.5rem; font-weight: 800;"><span id="totalDailyCost">0</span></td>
+                                <td></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <button onclick="addWorkerRow()" style="margin-top: 15px; padding: 12px 25px; background: #3498db; color: white; border: none; border-radius: 10px; font-weight: 700; cursor: pointer; font-size: 1rem;">➕ הוסף עובד</button>
+            </div>
+
+            <!-- תנאים ותקלות -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-icon">⚠️</span>
+                    <h2 class="section-title">תנאים, תקלות ושיפורים</h2>
+                </div>
+                <div class="form-group">
+                    <label>תנאי עבודה (מזג אוויר, תאורה, וכו')</label>
+                    <textarea id="workConditions" placeholder="תאר את תנאי העבודה היום..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>תקלות ובעיות שהתגלו</label>
+                    <textarea id="issues" placeholder="תעד כל תקלה או בעיה שהתגלתה..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>תוכנית שיפור / המלצות</label>
+                    <textarea id="improvements" placeholder="הצעות לשיפור התהליך או הטיפול בבעיות..."></textarea>
+                </div>
+            </div>
+
+            <!-- תוכנית למחר -->
+            <div class="section" style="background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%); border: none;">
+                <div class="section-header" style="border-bottom-color: #d63031;">
+                    <span class="section-icon">📋</span>
+                    <h2 class="section-title">תוכנית עבודה למחר</h2>
+                </div>
+                <div class="form-group">
+                    <label style="color: var(--text-dark);">תיאור מפורט של העבודות המתוכננות</label>
+                    <textarea id="tomorrowPlan" placeholder="מה מתוכנן לביצוע מחר? אילו לוחות? אילו שכבות?" style="min-height: 120px;"></textarea>
+                </div>
+            </div>
+
+            <!-- כפתורי פעולה -->
+            <div class="btn-container">
+                <button class="btn btn-save" onclick="saveData()">
+                    💾 שמור נתונים
+                </button>
+                <button class="btn" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;" onclick="addNewWorkDay()">
+                    ➕ הוסף יום עבודה חדש
+                </button>
+                <button class="btn btn-print" onclick="window.print()">
+                    🖨️ הדפס
+                </button>
+                <button class="btn btn-email" onclick="sendEmail()">
+                    📧 שלח במייל
+                </button>
+                <button class="btn btn-whatsapp" onclick="sendWhatsApp()">
+                    📱 שלח בוואטסאפ
+                </button>
+                <button class="btn btn-notebook" onclick="exportForNotebookLM()">
+                    📓 ייצוא ל‑NotebookLM
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('workDate').valueAsDate = new Date();
+        updateDayOfWeek();
+        initializeLayers();
+        document.getElementById('workDate').addEventListener('change', updateDayOfWeek);
+
+        function updateDayOfWeek() {
+            const dateInput = document.getElementById('workDate');
+            const dayInput = document.getElementById('dayOfWeek');
+            if (dateInput.value) {
+                const date = new Date(dateInput.value + 'T00:00:00');
+                const days = ['ראשון','שני','שלישי','רביעי','חמישי','שישי','שבת'];
+                dayInput.value = 'יום ' + days[date.getDay()];
+                updateCurrentDayDate();
+            }
+        }
+
+        function initializeLayers() {
+            const layerNames = ['1. פריימר (Primer)','2. בסיס ראשון (Base 1)','3. בסיס שני (Base 2)','4. Microtopping שכבה 1','5. Microtopping שכבה 2','6. סילר / אטם (Sealer)','7. לכה מגן (Top Coat)'];
+            const container = document.getElementById('layersContainer');
+            container.innerHTML = '';
+            layerNames.forEach((name, index) => {
+                const layerDiv = document.createElement('div');
+                layerDiv.className = 'layer-entry';
+                layerDiv.innerHTML = `<div class="layer-row" style="display:grid;grid-template-columns:50px 1fr 150px 200px 1fr;gap:10px;align-items:center;margin-bottom:10px;padding:10px;background:white;border-radius:8px;border:1px solid var(--border);"><div style="background:var(--primary);color:white;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;">${index+1}</div><div style="font-weight:600;color:var(--text-dark);">${name}</div><select style="padding:8px;border-radius:6px;border:1px solid var(--border);"><option value="טרם בוצע">טרם בוצע</option><option value="בביצוע">בביצוע</option><option value="הושלם">הושלם</option><option value="ייבוש">ייבוש</option></select><input type="time" style="padding:8px;border-radius:6px;border:1px solid var(--border);"><input type="text" placeholder="הערות לשכבה..." style="padding:8px;border-radius:6px;border:1px solid var(--border);"></div>`;
+                container.appendChild(layerDiv);
+            });
+        }
+
+        function addLayerEntry() {
+            const container = document.getElementById('layersContainer');
+            const count = container.children.length + 1;
+            const layerDiv = document.createElement('div');
+            layerDiv.className = 'layer-entry';
+            layerDiv.innerHTML = `<div class="layer-row" style="display:grid;grid-template-columns:50px 1fr 150px 200px 1fr;gap:10px;align-items:center;margin-bottom:10px;padding:10px;background:white;border-radius:8px;border:1px solid var(--border);"><div style="background:var(--secondary);color:white;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;">${count}</div><input type="text" placeholder="שם השכבה..." style="padding:8px;border-radius:6px;border:1px solid var(--border);font-weight:600;"><select style="padding:8px;border-radius:6px;border:1px solid var(--border);"><option value="טרם בוצע">טרם בוצע</option><option value="בביצוע">בביצוע</option><option value="הושלם">הושלם</option><option value="ייבוש">ייבוש</option></select><input type="time" style="padding:8px;border-radius:6px;border:1px solid var(--border);"><input type="text" placeholder="הערות..." style="padding:8px;border-radius:6px;border:1px solid var(--border);"></div>`;
+            container.appendChild(layerDiv);
+        }
+
+        function addPanelRow() {
+            const tbody = document.getElementById('panelsBody');
+            const row = tbody.insertRow();
+            const num = tbody.rows.length;
+            row.innerHTML = `<td><input type="text" value="לוח ${num}"></td><td><div class="dim-pair"><input type="number" class="dim-input dim-w" placeholder="רוחב" min="1" oninput="calcPanelArea(this)"><span class="dim-separator">&times;</span><input type="number" class="dim-input dim-h" placeholder="אורך" min="1" oninput="calcPanelArea(this)"></div></td><td><span class="area-display panel-area">0</span></td><td><input type="number" min="0" max="7" value="0"></td><td><select><option value="בתהליך">בתהליך</option><option value="הושלם">הושלם</option><option value="ממתין לייבוש">ממתין לייבוש</option></select></td><td><input type="text"></td>`;
+        }
+
+        function calcPanelArea(el) {
+            const row = el.closest('tr');
+            const w = parseFloat(row.querySelector('.dim-w').value) || 0;
+            const h = parseFloat(row.querySelector('.dim-h').value) || 0;
+            const span = row.querySelector('.panel-area');
+            span.textContent = (w > 0 && h > 0) ? ((w * h) / 10000).toFixed(2) : '0';
+            calculateTotals();
+        }
+
+        function calculateTotals() {
+            let totalArea = 0, totalPanels = 0;
+            document.querySelectorAll('.panel-area').forEach(span => {
+                const v = parseFloat(span.textContent) || 0;
+                if (v > 0) { totalArea += v; totalPanels++; }
+            });
+            document.getElementById('todayPanels').textContent = ' ' + totalPanels;
+            document.getElementById('todayArea').textContent = ' ' + totalArea.toFixed(2);
+            updateProgress();
+        }
+
+        function updateProgress() {
+            const totalPR = parseFloat(document.getElementById('totalPanelsRequired').value) || 0;
+            const totalAR = parseFloat(document.getElementById('totalAreaRequired').value) || 0;
+            let acc = JSON.parse(localStorage.getItem('accumulatedWork')) || {panels:0,area:0};
+            const tp = parseInt(document.getElementById('todayPanels').textContent.trim()) || 0;
+            const ta = parseFloat(document.getElementById('todayArea').textContent.trim()) || 0;
+            const cp = acc.panels + tp, ca = acc.area + ta;
+            document.getElementById('completedPanels').textContent = cp;
+            document.getElementById('completedArea').textContent = ca.toFixed(2);
+            document.getElementById('remainingText').textContent = 'נותר לביצוע: ' + Math.max(0,totalPR-cp) + ' לוחות | ' + Math.max(0,totalAR-ca).toFixed(2) + ' מ"ר';
+            const pct = totalPR > 0 ? Math.min(100,(cp/totalPR)*100) : 0;
+            const bar = document.getElementById('progressBar');
+            bar.style.width = pct + '%';
+            bar.textContent = pct.toFixed(1) + '%';
+        }
+
+        /* === Dynamic Workers === */
+        let workerCounter = 0;
+        function addWorkerRow(name, task, start, end, rate, present, remarks) {
+            workerCounter++;
+            const wId = 'w' + workerCounter;
+            const tbody = document.getElementById('workersBody');
+            name = name || 'עובד ' + workerCounter;
+            task = task || '';
+            start = start || '07:00';
+            end = end || '16:00';
+            rate = (rate !== undefined && rate !== null) ? rate : 800;
+            present = (present !== undefined) ? present : true;
+            remarks = remarks || '';
+            const mainRow = document.createElement('tr');
+            mainRow.id = 'workerRow-' + wId;
+            mainRow.dataset.workerId = wId;
+            mainRow.innerHTML = '<td><input type="text" class="worker-name-input" id="'+wId+'Name" value="'+name+'" placeholder="שם העובד"></td><td><input type="text" id="'+wId+'Task" value="'+task+'" placeholder="תאור המשימה"></td><td><input type="time" id="'+wId+'Start" value="'+start+'" onchange="calcWorkerHours(\''+wId+'\')"></td><td><input type="time" id="'+wId+'End" value="'+end+'" onchange="calcWorkerHours(\''+wId+'\')"></td><td><strong id="'+wId+'Hours">0</strong></td><td><input type="number" class="worker-rate-input" id="'+wId+'Rate" value="'+rate+'" min="0" step="50" onchange="calculateDailyCosts()"></td><td style="text-align:center;"><input type="checkbox" id="'+wId+'Present" '+(present?'checked':'')+' onchange="calculateDailyCosts()" style="width:25px;height:25px;cursor:pointer;"></td><td><strong id="'+wId+'Cost">0</strong></td><td style="text-align:center;"><button class="btn-remove-worker" onclick="removeWorker(\''+wId+'\')" title="הסר עובד">✕</button></td>';
+            tbody.appendChild(mainRow);
+            const remRow = document.createElement('tr');
+            remRow.id = 'workerRemarks-' + wId;
+            remRow.className = 'worker-remarks-row';
+            remRow.dataset.workerId = wId;
+            remRow.innerHTML = '<td colspan="9"><textarea class="worker-remarks-input" id="'+wId+'Remarks" placeholder="📝 הערות לעובד...">'+remarks+'</textarea></td>';
+            tbody.appendChild(remRow);
+            calcWorkerHours(wId);
+            calculateDailyCosts();
+        }
+
+        function removeWorker(wId) {
+            if (!confirm('האם להסיר עובד זה?')) return;
+            const r1 = document.getElementById('workerRow-'+wId);
+            const r2 = document.getElementById('workerRemarks-'+wId);
+            if (r1) r1.remove();
+            if (r2) r2.remove();
+            calculateDailyCosts();
+        }
+
+        function calcWorkerHours(wId) {
+            const s = document.getElementById(wId+'Start');
+            const e = document.getElementById(wId+'End');
+            const h = document.getElementById(wId+'Hours');
+            if (s && e && s.value && e.value) {
+                const st = new Date('2000-01-01T'+s.value);
+                const en = new Date('2000-01-01T'+e.value);
+                let diff = en - st;
+                if (diff < 0) diff += 86400000;
+                h.textContent = (diff/3600000).toFixed(1);
+            }
+            calculateDailyCosts();
+        }
+
+        function calculateWorkHours() {} // legacy
+
+        function getAllWorkerIds() {
+            return Array.from(document.querySelectorAll('#workersBody tr[id^="workerRow-"]')).map(r => r.dataset.workerId);
+        }
+
+        function calculateDailyCosts() {
+            let total = 0;
+            getAllWorkerIds().forEach(wId => {
+                const rate = parseFloat(document.getElementById(wId+'Rate')?.value) || 0;
+                const present = document.getElementById(wId+'Present')?.checked;
+                const cost = present ? rate : 0;
+                const el = document.getElementById(wId+'Cost');
+                if (el) el.textContent = cost.toLocaleString();
+                total += cost;
+            });
+            document.getElementById('totalDailyCost').textContent = total.toLocaleString();
+        }
+
+        function initializeDefaultWorkers() {
+            addWorkerRow('מנהל עבודה','ניהול וביקורת','07:00','16:00',2000,true,'');
+            addWorkerRow('עובד 1','יישום שכבות','07:00','16:00',800,true,'');
+            addWorkerRow('עובד 2','הכנה וגימור','07:00','16:00',800,true,'');
+        }
+
+        function addNewWorkDay() {
+            saveData();
+            const cur = parseInt(document.getElementById('dayNumber').textContent);
+            const nw = cur + 1;
+            localStorage.setItem('currentDayNumber', nw);
+            document.getElementById('dayNumber').textContent = nw;
+            const d = new Date(document.getElementById('workDate').value);
+            d.setDate(d.getDate() + 1);
+            document.getElementById('workDate').valueAsDate = d;
+            updateDayOfWeek();
+            document.querySelectorAll('#layersContainer input, #layersContainer textarea').forEach(el => { if (el.type !== 'text' || !el.readOnly) el.value = ''; });
+            const tb = document.getElementById('panelsBody');
+            while (tb.rows.length > 1) tb.deleteRow(1);
+            tb.rows[0].querySelectorAll('input').forEach(i => { if (i.type==='number') i.value=''; else if (i.type==='text'&&!i.placeholder.includes('לוח')) i.value=''; });
+            tb.rows[0].querySelectorAll('.panel-area').forEach(s => s.textContent='0');
+            document.getElementById('todayPanels').textContent=' 0';
+            document.getElementById('todayArea').textContent=' 0';
+            document.getElementById('workConditions').value='';
+            document.getElementById('issues').value='';
+            document.getElementById('improvements').value='';
+            document.getElementById('tomorrowPlan').value='';
+            getAllWorkerIds().forEach(wId => { const t=document.getElementById(wId+'Task'); const r=document.getElementById(wId+'Remarks'); if(t)t.value=''; if(r)r.value=''; });
+            window.scrollTo({top:0,behavior:'smooth'});
+            showToast('✓ יום עבודה '+nw+' נוצר! הנתונים של יום '+cur+' נשמרו.');
+        }
+
+        function updateCurrentDayDate() {
+            const date = document.getElementById('workDate').value;
+            const dow = document.getElementById('dayOfWeek').value;
+            if (date && dow) {
+                const fmt = new Date(date+'T00:00:00').toLocaleDateString('he-IL',{year:'numeric',month:'long',day:'numeric'});
+                document.getElementById('currentDayDate').textContent = dow + ', ' + fmt;
+            }
+        }
+
+        function saveData() {
+            const dayNumber = document.getElementById('dayNumber').textContent;
+            const workers = [];
+            getAllWorkerIds().forEach(wId => {
+                workers.push({name:document.getElementById(wId+'Name')?.value||'',task:document.getElementById(wId+'Task')?.value||'',start:document.getElementById(wId+'Start')?.value||'',end:document.getElementById(wId+'End')?.value||'',hours:document.getElementById(wId+'Hours')?.textContent||'0',rate:parseFloat(document.getElementById(wId+'Rate')?.value)||0,present:document.getElementById(wId+'Present')?.checked||false,remarks:document.getElementById(wId+'Remarks')?.value||''});
+            });
+            const data = {dayNumber,workers,date:document.getElementById('workDate').value,projectName:document.getElementById('projectName').value,siteAddress:document.getElementById('siteAddress').value,totalPanelsRequired:document.getElementById('totalPanelsRequired').value,totalAreaRequired:document.getElementById('totalAreaRequired').value,workConditions:document.getElementById('workConditions').value,issues:document.getElementById('issues').value,improvements:document.getElementById('improvements').value,tomorrowPlan:document.getElementById('tomorrowPlan').value,todayPanels:parseInt(document.getElementById('todayPanels').textContent.trim())||0,todayArea:parseFloat(document.getElementById('todayArea').textContent.trim())||0,totalDailyCost:document.getElementById('totalDailyCost').textContent};
+            let acc = JSON.parse(localStorage.getItem('accumulatedWork'))||{panels:0,area:0};
+            const prev = localStorage.getItem('dailyWork_'+data.date);
+            if(prev){const p=JSON.parse(prev);acc.panels-=p.todayPanels||0;acc.area-=p.todayArea||0;}
+            acc.panels+=data.todayPanels;acc.area+=data.todayArea;
+            localStorage.setItem('accumulatedWork',JSON.stringify(acc));
+            localStorage.setItem('dailyWork_'+data.date,JSON.stringify(data));
+            localStorage.setItem('dailyWork_day_'+dayNumber,JSON.stringify(data));
+            showToast('✓ הנתונים נשמרו בהצלחה!');
+        }
+
+        function sendEmail() {
+            const pn=document.getElementById('projectName').value||'פרויקט',dt=document.getElementById('workDate').value,dn=document.getElementById('dayNumber').textContent,tp=document.getElementById('todayPanels').textContent,ta=document.getElementById('todayArea').textContent,tc=document.getElementById('totalDailyCost').textContent;
+            let wt='';
+            getAllWorkerIds().forEach(wId=>{const n=document.getElementById(wId+'Name')?.value||'עובד',p=document.getElementById(wId+'Present')?.checked,h=document.getElementById(wId+'Hours')?.textContent||'0';wt+=p?'✓ '+n+' - '+h+' שעות\n':'✗ '+n+' - לא נוכח\n';});
+            const subj='דוח יומי '+dn+' - ציפוי Topcret - '+pn+' - '+dt;
+            const body='דוח עבודה יומי מספר '+dn+'\n\nפרויקט: '+pn+'\nתאריך: '+dt+'\n\nביצוע היום:\n- לוחות: '+tp+'\n- שטח: '+ta+' מ"ר\n\nנוכחות:\n'+wt+'\nסה"כ עלות: ₪'+tc;
+            window.location.href='mailto:?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body);
+            showToast('📧 הודעת המייל נפתחה!');
+        }
+
+        function sendWhatsApp() {
+            const pn=document.getElementById('projectName').value||'פרויקט',dt=document.getElementById('workDate').value,dn=document.getElementById('dayNumber').textContent,tp=document.getElementById('todayPanels').textContent,ta=document.getElementById('todayArea').textContent,tc=document.getElementById('totalDailyCost').textContent;
+            let wt='';
+            getAllWorkerIds().forEach(wId=>{const n=document.getElementById(wId+'Name')?.value||'עובד',p=document.getElementById(wId+'Present')?.checked,h=document.getElementById(wId+'Hours')?.textContent||'0';wt+=p?'✓ '+n+' - '+h+' שעות\n':'✗ '+n+'\n';});
+            const msg='*דוח עבודה יומי '+dn+' - ציפוי Topcret*\n\n📅 תאריך: '+dt+'\n🏗️ פרויקט: '+pn+'\n\n✅ *ביצוע היום:*\n📦 לוחות: '+tp+'\n📐 שטח: '+ta+' מ"ר\n\n👷 *נוכחות:*\n'+wt+'\n💰 *עלות: ₪'+tc+'*';
+            window.open('https://wa.me/?text='+encodeURIComponent(msg),'_blank');
+            showToast('📱 וואטסאפ נפתח!');
+        }
+
+        function exportForNotebookLM() {
+            const pn=document.getElementById('projectName').value||'פרויקט',dt=document.getElementById('workDate').value,dow=document.getElementById('dayOfWeek').value||'',dn=document.getElementById('dayNumber').textContent,sa=document.getElementById('siteAddress').value||'',tp=document.getElementById('todayPanels').textContent.trim(),ta=document.getElementById('todayArea').textContent.trim(),tc=document.getElementById('totalDailyCost').textContent;
+            const now=new Date();const ts=now.getFullYear()+String(now.getMonth()+1).padStart(2,'0')+String(now.getDate()).padStart(2,'0')+'_'+String(now.getHours()).padStart(2,'0')+String(now.getMinutes()).padStart(2,'0');
+            let md='# דוח עבודה יומי - ציפוי Topcret Microtopping\n\n## יום עבודה מספר '+dn+'\n- **תאריך:** '+dt+' ('+dow+')\n- **פרויקט:** '+pn+'\n';
+            if(sa) md+='- **כתובת:** '+sa+'\n';
+            md+='\n## 📊 סיכום פרויקט\n| נתון | ערך |\n|---|---|\n| לוחות נדרש | '+(document.getElementById('totalPanelsRequired').value||0)+' |\n| שטח נדרש | '+(document.getElementById('totalAreaRequired').value||0)+' מ"ר |\n| בוצע (לוחות) | '+document.getElementById('completedPanels').textContent+' |\n| בוצע (מ"ר) | '+document.getElementById('completedArea').textContent+' |\n\n';
+            md+='## 📦 לוחות היום\n\n| לוח | מידות | שטח | שכבות | סטטוס | הערות |\n|---|---|---|---|---|---|\n';
+            Array.from(document.getElementById('panelsBody').rows).forEach(row=>{
+                const n=row.querySelector('td:nth-child(1) input'),dw=row.querySelector('.dim-w'),dh=row.querySelector('.dim-h'),ar=row.querySelector('.panel-area'),ly=row.querySelector('td:nth-child(4) input'),st=row.querySelector('select'),nt=row.querySelector('td:nth-child(6) input');
+                const dims=(dw?.value&&dh?.value)?dw.value+'×'+dh.value:'-';
+                md+='| '+(n?.value||'-')+' | '+dims+' | '+(ar?.textContent||'0')+' | '+(ly?.value||'0')+' | '+(st?.value||'-')+' | '+(nt?.value||'-')+' |\n';
+            });
+            md+='\n**סיכום:** '+tp+' לוחות | '+ta+' מ"ר\n\n## 👷 עובדים\n\n| עובד | משימה | שעות | נוכח | עלות | הערות |\n|---|---|---|---|---|---|\n';
+            getAllWorkerIds().forEach(wId=>{
+                md+='| '+(document.getElementById(wId+'Name')?.value||'-')+' | '+(document.getElementById(wId+'Task')?.value||'-')+' | '+(document.getElementById(wId+'Hours')?.textContent||'0')+' | '+(document.getElementById(wId+'Present')?.checked?'✓':'✗')+' | '+(document.getElementById(wId+'Cost')?.textContent||'0')+' ₪ | '+(document.getElementById(wId+'Remarks')?.value||'-')+' |\n';
+            });
+            md+='\n**סה"כ עלות: ₪'+tc+'**\n\n';
+            const co=document.getElementById('workConditions').value,is=document.getElementById('issues').value,im=document.getElementById('improvements').value,tm=document.getElementById('tomorrowPlan').value;
+            if(co||is||im){md+='## ⚠️ תנאים ותקלות\n\n';if(co)md+='**תנאים:** '+co+'\n\n';if(is)md+='**תקלות:** '+is+'\n\n';if(im)md+='**שיפורים:** '+im+'\n\n';}
+            if(tm) md+='## 📋 תוכנית למחר\n\n'+tm+'\n\n';
+            md+='---\n*Topcret Spain | '+now.toLocaleString('he-IL')+'*\n';
+            const fn='NotebookLM_Topcret_יום'+dn+'_'+pn.replace(/\s+/g,'_')+'_'+ts+'.md';
+            const blob=new Blob([md],{type:'text/markdown;charset=utf-8'});
+            const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=fn;a.click();URL.revokeObjectURL(url);
+            navigator.clipboard.writeText(md).then(()=>showToast('✅ MD נוצר + הועתק!')).catch(()=>showToast('✅ MD נוצר!'));
+        }
+
+        function showToast(msg) {
+            const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);
+        }
+
+        window.addEventListener('load', function() {
+            const sdn=localStorage.getItem('currentDayNumber');
+            if(sdn) document.getElementById('dayNumber').textContent=sdn;
+            const date=document.getElementById('workDate').value;
+            const saved=localStorage.getItem('dailyWork_'+date);
+            if(saved){
+                const data=JSON.parse(saved);
+                Object.keys(data).forEach(key=>{if(key==='workers'||key==='totalDailyCost')return;const el=document.getElementById(key);if(el)el.value=data[key];});
+                if(data.workers&&Array.isArray(data.workers)){data.workers.forEach(w=>addWorkerRow(w.name,w.task,w.start,w.end,w.rate,w.present,w.remarks));}
+                else{initializeDefaultWorkers();}
+            } else {initializeDefaultWorkers();}
+            updateCurrentDayDate();calculateDailyCosts();updateProgress();
+        });
+
+        setInterval(saveData, 60000);
+    </script>
+</body>
+</html>
